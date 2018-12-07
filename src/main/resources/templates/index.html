@@ -11,6 +11,27 @@
 
 <div>
     <span th:text="${singlePerson.name}"></span>
+
+    <div th:if="${not #lists.isEmpty(people)}">
+        <div>
+            <ul>
+                <li th:each="person:${people}">
+                    <span th:text="${person.name}"></span>
+                    <button th:onclick="'javascript:getName(\''+${person.name}+'\')'">获得名字</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+<script th:src="@{jquery-3.3.1.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap-3.3.7/dist/js/bootstrap.js}"/>
+<script th:inline="javascript">
+    var singlePerson = [[${singlePerson}]];
+    console.log(singlePerson.name);
+
+    function getName(name) {
+        console.log(name)
+    }
+</script>
 </body>
 </html>
