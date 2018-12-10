@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.AuthorSettings;
+import com.example.demo.dao.Customer;
 import com.example.demo.dao.temp.RetResult;
 import com.example.demo.dao.vo.PersonVO;
+import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,11 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class Index {
 
     @Value("${book.author}")
@@ -25,6 +28,9 @@ public class Index {
 
     @Autowired
     private AuthorSettings authorSettings;
+
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -39,20 +45,18 @@ public class Index {
     }
 
     @RequestMapping("/configurationProperties")
-    @ResponseBody
     public String configurationProperties(){
         return authorSettings.getName();
     }
 
 
     @PostMapping("/getRetResult")
-    @ResponseBody
     public RetResult getRetResult(){
-        RetResult retResult = new RetResult();
-        retResult.setData("hello");
+        RetResult retResult= new RetResult<>();
+        List<Customer> customers = customerService.getAllCustomers(1);
+        retResult.setData(customers.get(0));
         return retResult;
     }
-
 
 
 }
