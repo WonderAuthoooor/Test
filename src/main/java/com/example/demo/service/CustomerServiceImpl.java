@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService{
 
@@ -15,8 +18,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 
     @Override
-    public List<Customer> getAllCustomers(int id) {
-        customerMapper.getAllCustomers(id);
-        return null;
+    public int insert(Customer customer) {
+        return customerMapper.insert(customer);
     }
 }

@@ -1,14 +1,17 @@
 package com.example.demo.dao.temp;
 
+/**
+ * @author admin
+ */
 public class RetResult<T> {
 
-    private T Data;
+    private T data;
 
     public T getData() {
-        return Data;
+        return data;
     }
 
     public void setData(T data) {
-        Data = data;
+        this.data = data;
     }
 }

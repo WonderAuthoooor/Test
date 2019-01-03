@@ -4,7 +4,15 @@ import com.example.demo.dao.Customer;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 public interface CustomerService {
 
-    public List<Customer> getAllCustomers(int id);
+    /**
+     * 获取customer
+     * @return
+     * @param customer
+     */
+    public int insert(Customer customer);
 }

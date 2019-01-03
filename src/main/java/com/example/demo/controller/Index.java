@@ -7,17 +7,19 @@ import com.example.demo.dao.vo.PersonVO;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @RestController
+@RequestMapping("/Index")
 public class Index {
 
     @Value("${book.author}")
@@ -53,10 +55,14 @@ public class Index {
     @PostMapping("/getRetResult")
     public RetResult getRetResult(){
         RetResult retResult= new RetResult<>();
-        List<Customer> customers = customerService.getAllCustomers(1);
-        retResult.setData(customers.get(0));
+        Customer customer = new Customer();
+        customer.setCusId(2);
+        customer.setUsername("zhansan");
+        customer.setAcno("als");
+        customer.setGender("male");
+        customer.setPhone("1321321");
+        customerService.insert(customer);
         return retResult;
     }
-
 
 }
