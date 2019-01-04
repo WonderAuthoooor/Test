@@ -7,6 +7,7 @@ import com.example.demo.dao.vo.PersonVO;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * @author admin
  */
-@RestController
+@Controller
 @RequestMapping("/Index")
 public class Index {
 
